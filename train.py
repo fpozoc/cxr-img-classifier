@@ -17,7 +17,9 @@ def main(config: DictConfig):
 
     # Applies optional utilities
     utils.extras(config)
-
+    if config.get("print_config"):
+        utils.print_config(config, resolve=True)
+        
     # Train model
     return train(config)
 
