@@ -24,7 +24,7 @@ class MNISTLitModule(LightningModule):
 
     def __init__(
         self,
-        net: torch.nn.Module,
+        model: torch.nn.Module,
         lr: float = 0.001,
         weight_decay: float = 0.0005,
     ):
@@ -34,7 +34,7 @@ class MNISTLitModule(LightningModule):
         # it also ensures init params will be stored in ckpt
         self.save_hyperparameters(logger=False)
 
-        self.net = net
+        self.model = model
 
         # loss function
         self.criterion = torch.nn.CrossEntropyLoss()
@@ -49,7 +49,7 @@ class MNISTLitModule(LightningModule):
         self.val_acc_best = MaxMetric()
 
     def forward(self, x: torch.Tensor):
-        return self.net(x)
+        return self.model(x)
 
     def step(self, batch: Any):
         x, y = batch
