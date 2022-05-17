@@ -1,0 +1,19 @@
+_target_: src.datamodules.cxr_datamodule.CXRDataModule
+
+data_dir: ${data_dir} # data_dir is specified in config.yaml
+batch_size: 16
+train_val_test_split: [60, 20, 20]
+num_workers: 0
+pin_memory: False
+
+classes: 2
+dataset_size: 500
+normal: 0
+img_size: 128
+model: "chexpert"
+scale: 0
+shear: 0 
+translation: 0
+rotation: 0
+horizontal_flip: False
+vertical_flip: False
